@@ -27,4 +27,4 @@ build-vips:
 
 test-vips:
 	docker run --rm --name test-vips \
-		-it ${PREFIX_LOMO_VIPS} vips-docker-build
+		-it ${PREFIX_LOMO_VIPS} ./vips-docker-build

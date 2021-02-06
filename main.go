@@ -39,11 +39,11 @@ func main() {
 		log.Fatal(err)
 	}
 	for _, f := range files {
-		if f.IsDir() || strings.Contains(filepath.Join(baseDir, f.Name()), "thumbnail") {
+		if f.IsDir() || strings.Contains(f.Name(), "thumbnail") {
 			continue
 		}
 		for _, dim := range dims {
-			if err := generateThumbnail(f.Name(), dim.width, dim.height); err != nil {
+			if err := generateThumbnail(filepath.Join(baseDir, f.Name()), dim.width, dim.height); err != nil {
 				log.Fatal(err)
 			}
 		}
