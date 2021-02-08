@@ -1,4 +1,4 @@
-.PHONY: vendor
+.PHONY: test-vips-go test-vips-c
 
 SHELL=/bin/bash # Use bash syntax
 VIPS_BUILD_HEIF=true
@@ -25,6 +25,10 @@ build-vips:
 		--build-arg LIBVIPS_VERSION=${LIBVIPS_VERSION} \
 		--tag ${PREFIX_LOMO_VIPS} .
 
-test-vips:
+test-vips-go:
 	docker run --rm --name test-vips \
-		-it ${PREFIX_LOMO_VIPS} ./vips-docker-build
+		-it ${PREFIX_LOMO_VIPS} ./test-vips-go/test-vips
+
+test-vips-c:
+	docker run --rm --name test-vips \
+		-it ${PREFIX_LOMO_VIPS} ./test-vips-c/test-vips

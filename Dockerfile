@@ -25,12 +25,19 @@ ENV LD_LIBRARY_PATH /usr/local/lib
 
 ARG SRC_DIR
 
-RUN mkdir -p $SRC_DIR
-COPY go.sum go.mod main.go $SRC_DIR/
+RUN mkdir -p $SRC_DIR/test-vips-go
+COPY go.sum go.mod Makefile $SRC_DIR/
 COPY vendor $SRC_DIR/vendor
 COPY test-images $SRC_DIR/test-images
+COPY test-vips-go/main.go $SRC_DIR/test-vips-go/
 
-RUN cd $SRC_DIR; go build
+RUN cd $SRC_DIR/test-vips-go; go build -o test-vips
+
+RUN mkdir -p $SRC_DIR/test-vips-c
+COPY test-vips-c/main.c $SRC_DIR/test-vips-c/
+COPY test-vips-c/run.sh $SRC_DIR/test-vips-c/
+
+RUN cd $SRC_DIR/test-vips-c; ./run.sh
 
 RUN [ "cross-build-end" ]
 

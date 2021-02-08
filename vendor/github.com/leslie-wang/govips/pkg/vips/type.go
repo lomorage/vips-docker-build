@@ -101,6 +101,9 @@ const (
 	ImageTypeSVG     ImageType = C.SVG
 	ImageTypeTIFF    ImageType = C.TIFF
 	ImageTypeWEBP    ImageType = C.WEBP
+	ImageTypeHEIF    ImageType = C.HEIF
+	ImageTypeHEIC    ImageType = C.HEIC
+	ImageTypeBMP     ImageType = C.BMP
 )
 
 var imageTypeExtensionMap = map[ImageType]string{
@@ -112,6 +115,9 @@ var imageTypeExtensionMap = map[ImageType]string{
 	ImageTypeSVG:    ".svg",
 	ImageTypeTIFF:   ".tiff",
 	ImageTypeWEBP:   ".webp",
+	ImageTypeHEIF:   ".heif",
+	ImageTypeHEIC:   ".heic",
+	ImageTypeBMP:    ".bmp",
 }
 
 // OutputExt returns the canonical extension for the ImageType
@@ -380,6 +386,9 @@ var ImageTypes = map[ImageType]string{
 	ImageTypeSVG:    "svg",
 	ImageTypeTIFF:   "tiff",
 	ImageTypeWEBP:   "webp",
+	ImageTypeHEIF:   "heif",
+	ImageTypeHEIC:   "heif",
+	ImageTypeBMP:    "bmp",
 }
 
 type Composite struct {
